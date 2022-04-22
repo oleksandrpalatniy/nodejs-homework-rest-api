@@ -6,7 +6,26 @@ const contactSchema = new Schema({
   email: {type: String},
   phone: {type: String},
   favorite: {type: Boolean, default: false}, 
-});
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+    required: true, 
+ },
+ },
+ {
+  versionKey: false,
+  timestamps: true,
+  toJSON: {
+    virtuals: true,
+    transform: (doc, ret) => {
+      delete ret._id
+      delete ret.isVaccinated
+      return ret
+    },
+  },
+  toObject: { virtuals: true },
+},
+ );
 
 const Contact = model('contact', contactSchema)
 
