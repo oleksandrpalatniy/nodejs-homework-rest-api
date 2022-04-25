@@ -17,4 +17,8 @@ const updateToken = async (id, token) => {
     return await User.findByIdAndUpdate(id, {token})
 }
 
-module.exports = {findById, findByEmail, create, updateToken}
+const updateAvatar = async (id, avatar) => {
+    return await User.findByIdAndUpdate(id, {avatar})
+}
+
+module.exports = {findById, findByEmail, create, updateToken, updateAvatar}

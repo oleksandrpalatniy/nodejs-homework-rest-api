@@ -40,6 +40,7 @@ const current = async (req, res) => {
         .json({
             email: req.user.email,
             subscription: req.user.role,
+            avatar: req.user.avatar,
         })
 }
 
